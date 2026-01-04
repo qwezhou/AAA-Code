@@ -3,18 +3,35 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -n client,server -c auto \"vite\" \"node --watch server/index.mjs\"",
+    "dev:client": "vite",
+    "dev:server": "node --watch server/index.mjs",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node server/index.mjs"
   },
   "dependencies": {
-    "vue": "^3.5.24"
+    "@iconify/vue": "^5.0.0",
+    "@guolao/vue-monaco-editor": "^1.6.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "cookie-parser": "^1.4.7",
+    "dompurify": "^3.3.1",
+    "express": "^5.2.1",
+    "monaco-editor": "^0.55.1",
+    "tailwindcss": "^4.1.18",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@types/node": "^24.10.1",
+    "@types/dompurify": "^3.0.5",
+    "@types/node": "^24.10.4",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
+    "concurrently": "^9.2.1",
     "typescript": "~5.9.3",
     "vite": "^7.3.0",
     "vue-tsc": "^3.1.4"
